@@ -291,51 +291,9 @@ const GiftGuide = () => {
             ))}
           </Space>
         );
-        <TabPane tab="礼物分类" key="overview">
-          <Space direction="vertical" size="large" style={{ width: '100%' }}>
-            {giftCategories.map((category, index) => (
-              <Card key={index}>
-                <Row gutter={24}>
-                  <Col span={4} style={{ textAlign: 'center' }}>
-                    {category.icon}
-                    <Title level={3} style={{ marginTop: '8px' }}>
-                      {category.category}
-                    </Title>
-                  </Col>
-                  <Col span={20}>
-                    <Row gutter={[16, 16]}>
-                      {category.gifts.map((gift, giftIndex) => (
-                        <Col span={12} key={giftIndex}>
-                          <Card size="small" style={{ marginBottom: '8px' }}>
-                            <Row gutter={8}>
-                              <Col span={16}>
-                                <Title level={4} style={{ margin: 0 }}>
-                                  {gift.name}
-                                </Title>
-                                <Text type="secondary">{gift.price}</Text>
-                                <br />
-                                <Text>{gift.reason}</Text>
-                              </Col>
-                              <Col span={8} style={{ textAlign: 'center' }}>
-                                <Rate disabled value={gift.rating} />
-                                <br />
-                                <Text type="secondary">
-                                  {gift.rating}/5分
-                                </Text>
-                              </Col>
-                            </Row>
-                          </Card>
-                        </Col>
-                      ))}
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            ))}
-          </Space>
-        </TabPane>
 
-        <TabPane tab="关系类型" key="relationship">
+      case '/gift-guide/relationship':
+        return (
           <Space direction="vertical" size="large" style={{ width: '100%' }}>
             {relationshipGifts.map((rel, index) => (
               <Card key={index}>
@@ -365,9 +323,10 @@ const GiftGuide = () => {
               </Card>
             ))}
           </Space>
-        </TabPane>
+        );
 
-        <TabPane tab="年龄阶段" key="age">
+      case '/gift-guide/age':
+        return (
           <Space direction="vertical" size="large" style={{ width: '100%' }}>
             {ageGifts.map((age, index) => (
               <Card key={index}>
@@ -396,9 +355,10 @@ const GiftGuide = () => {
               </Card>
             ))}
           </Space>
-        </TabPane>
+        );
 
-        <TabPane tab="创意想法" key="ideas">
+      case '/gift-guide/ideas':
+        return (
           <Space direction="vertical" size="large" style={{ width: '100%' }}>
             {giftIdeas.map((idea, index) => (
               <Card key={index}>
@@ -437,9 +397,10 @@ const GiftGuide = () => {
               </Card>
             ))}
           </Space>
-        </TabPane>
+        );
 
-        <TabPane tab="避坑指南" key="mistakes">
+      case '/gift-guide/mistakes':
+        return (
           <Card>
             <Title level={2}>⚠️ 常见送礼错误</Title>
             <List
@@ -464,9 +425,10 @@ const GiftGuide = () => {
               )}
             />
           </Card>
-        </TabPane>
+        );
 
-        <TabPane tab="实用建议" key="tips">
+      case '/gift-guide/tips':
+        return (
           <Card>
             <Title level={2}>🎯 如何选择合适的礼物</Title>
 
@@ -529,8 +491,34 @@ const GiftGuide = () => {
               style={{ marginTop: '24px' }}
             />
           </Card>
-        </TabPane>
-      </Tabs>
+        );
+
+      default:
+        return (
+          <Card>
+            <Title level={2}>欢迎来到礼物推荐指南</Title>
+            <Paragraph>请从左侧菜单选择您要了解的内容。</Paragraph>
+          </Card>
+        );
+    }
+  };
+
+  return (
+    <div>
+      <div style={{ marginBottom: '24px' }}>
+        <Title level={1} style={{ color: '#ff69b4', textAlign: 'center' }}>
+          🎁 女孩生日礼物完全指南
+        </Title>
+        <Alert
+          message="送礼小贴士"
+          description="选择生日礼物时，最重要的是体现你的用心和关心。价格不是最重要的，关键是要符合她的喜好和你们的关系。"
+          type="info"
+          showIcon
+          style={{ marginBottom: '24px' }}
+        />
+      </div>
+
+      {renderContent()}
     </div>
   );
 };

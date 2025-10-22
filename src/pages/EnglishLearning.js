@@ -376,7 +376,7 @@ const EnglishLearning = () => {
         return (
           <Card>
             <Title level={2}>📅 制定你的英语学习计划</Title>
-            
+
             <Title level={3}>每日学习计划（建议2-3小时）：</Title>
             <List
               dataSource={[
@@ -406,7 +406,7 @@ const EnglishLearning = () => {
                 { day: '周六', focus: '兴趣学习' },
                 { day: '周日', focus: '总结和规划' }
               ].map((item, index) => (
-                <Col span={24/7} key={index}>
+                <Col span={24 / 7} key={index}>
                   <Card size="small" style={{ textAlign: 'center' }}>
                     <Title level={4}>{item.day}</Title>
                     <Text>{item.focus}</Text>
@@ -440,7 +440,7 @@ const EnglishLearning = () => {
         return (
           <Card>
             <Title level={2}>🚀 英语学习进阶技巧</Title>
-            
+
             <Title level={3}>提高学习效率：</Title>
             <List
               dataSource={[

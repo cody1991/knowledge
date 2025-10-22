@@ -65,12 +65,12 @@ const Layout = ({ children }) => {
   const getBreadcrumbItems = () => {
     const pathSegments = location.pathname.split('/').filter(Boolean);
     const items = [{ title: '首页' }];
-    
+
     if (pathSegments.length > 0) {
       const mainCategory = menuItems.find(item => item.key === `/${pathSegments[0]}`);
       if (mainCategory) {
         items.push({ title: mainCategory.label });
-        
+
         if (pathSegments.length > 1) {
           const subItem = mainCategory.children?.find(child => child.key === location.pathname);
           if (subItem) {
@@ -79,7 +79,7 @@ const Layout = ({ children }) => {
         }
       }
     }
-    
+
     return items;
   };
 
@@ -151,8 +151,8 @@ const Layout = ({ children }) => {
             boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
             minHeight: 'calc(100vh - 112px)'
           }}>
-            <Breadcrumb 
-              items={getBreadcrumbItems()} 
+            <Breadcrumb
+              items={getBreadcrumbItems()}
               style={{ marginBottom: '24px' }}
             />
             {children}
